@@ -1,0 +1,62 @@
+<div style="width: 800px;">
+    <h1>To Do Example</h1>
+<button style="margin-bottom: 10px;" routerLink = "add-task">Add new Task</button>
+<div>
+    <button style="margin-bottom: 10px;" (click)="completeTask()" [disabled]="!rowsSelected()">
+            Complete task
+    </button>
+</div>
+<div>
+    <button (click)="deleteTask()" [disabled]="!rowsSelected()">
+            Delete task
+    </button>
+</div>
+        <!-- Because we are using the Angular ID (ie #ag-grid marker), we have to have all the items that use
+             that marker inside the same ng-if as the grid -->
+
+        <div style="padding: 4px;" class="toolbar">
+            
+        </div>
+        <div style="clear: both;"></div>
+
+        <ag-grid-angular style="width: 100%; height: 350px;" class="ag-fresh"
+
+                     [gridOptions]="gridOptions"
+                     [columnDefs]="columnDefs"
+                     [rowData]="rowData"
+
+                     
+                     rowHeight="22"
+                     rowSelection="single"
+
+                     (modelUpdated)="onModelUpdated()"
+                     (cellClicked)="onCellClicked($event)"
+                     (cellDoubleClicked)="onCellDoubleClicked($event)"
+                     (cellContextMenu)="onCellContextMenu($event)"
+                     (cellValueChanged)="onCellValueChanged($event)"
+                     (cellFocused)="onCellFocused($event)"
+                     (rowSelected)="onRowSelected($event)"
+                     (selectionChanged)="onSelectionChanged()"
+                     (beforeFilterChanged)="onBeforeFilterChanged()"
+                     (afterFilterChanged)="onAfterFilterChanged()"
+                     (filterModified)="onFilterModified()"
+                     (beforeSortChanged)="onBeforeSortChanged()"
+                     (afterSortChanged)="onAfterSortChanged()"
+                     (virtualRowRemoved)="onVirtualRowRemoved($event)"
+                     (rowClicked)="onRowClicked($event)"
+                     (gridReady)="onReady($event)"
+
+                     (columnEverythingChanged)="onColumnEvent($event)"
+                     (columnRowGroupChanged)="onColumnEvent($event)"
+                     (columnValueChanged)="onColumnEvent($event)"
+                     (columnMoved)="onColumnEvent($event)"
+                     (columnVisible)="onColumnEvent($event)"
+                     (columnGroupOpened)="onColumnEvent($event)"
+                     (columnResized)="onColumnEvent($event)"
+                     (columnPinnedCountChanged)="onColumnEvent($event)">
+        </ag-grid-angular>
+<div>
+Task completed  {{rowCount}}
+</div>
+
+</div>

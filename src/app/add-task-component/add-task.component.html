@@ -1,0 +1,12 @@
+  <form [formGroup]="todoForm" (ngSubmit)="addTask(todoForm.value)">
+    <div class="form-container">
+      <div class="row columns">
+        <h1>Add task form</h1>
+        <label>Name
+          <input type="text" formControlName="taskName">
+          <div class="alert" *ngIf="!todoForm.controls['taskName'].valid && todoForm.controls['taskName'].touched">Task name is required</div>
+        </label>        
+        <input type="submit" value="Submit Form" [disabled]="!todoForm.valid">
+      </div>
+    </div>
+  </form>
